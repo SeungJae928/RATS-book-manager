@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
         showBookList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    
 
     const bookNameHandler = (e) => {
         e.preventDefault();
@@ -74,21 +77,22 @@ function App() {
     return (
         <div>
             <form onSubmit={submitHandler}>
-            <h1>책 등록</h1>
-            <label>BookName</label>
-            <input type="text" value={bookName} onChange={bookNameHandler}></input>
-            <label>ISBN</label>
-            <input type="text" value={ISBN} onChange={ISBNHandler}></input>
-            <label>Author</label>
-            <input type="text" value={author} onChange={authorHandler}></input>
-            <label>Publisher</label>
-            <input type="text" value={publisher} onChange={publisherHandler}></input>
-            <br/>
-            <button type="submit">Add</button>
-        </form>
+                <h1>책 등록</h1>
+                <label>BookName</label>
+                <input type="text" value={bookName} onChange={bookNameHandler}></input>
+                <label>ISBN</label>
+                <input type="text" value={ISBN} onChange={ISBNHandler}></input>
+                <label>Author</label>
+                <input type="text" value={author} onChange={authorHandler}></input>
+                <label>Publisher</label>
+                <input type="text" value={publisher} onChange={publisherHandler}></input>
+                <br/>
+                <button type="submit">Add</button>
+            </form>
         <form onSubmit={bookListHandler}>
         <h1>책 조회</h1>
             <button type="submit">조회</button>
+            <br/>
             <label>BookList</label>
             <table>
                 <thead>
