@@ -1,62 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
-import axios from 'axios';
 import ShowBook from './component/ShowBook';
 import GetBook from './component/GetBook';
 
 function App() {
-    const Url = "http://localhost:8080";
-
-    // const [ISBN, setISBN] = useState();
-    // const [bookName, setBookName] = useState();
-    // const [author, setAuthor] = useState();
-    // const [publisher, setPublisher] = useState();
-
     useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    
-
-    // const bookNameHandler = (e) => {
-    //     e.preventDefault();
-    //     setBookName(e.target.value)
-    // }
-
-    // const ISBNHandler = (e) => {
-    //     e.preventDefault();
-    //     setISBN(e.target.value)
-    // }
-
-    // const authorHandler = (e) => {
-    //     e.preventDefault();
-    //     setAuthor(e.target.value)
-    // }
-
-    // const publisherHandler = (e) => {
-    //     e.preventDefault();
-    //     setPublisher(e.target.value)
-    // }
-
-    // const submitHandler = (e) => {
-    //     e.preventDefault()
-    //     getBook();
-    // }
-
-    // async function getBook() {
-    //     await axios.put(Url + "/api/book/add", {
-    //         isbn:ISBN,
-    //         bookName:bookName,
-    //         author:author,
-    //         publisher:publisher
-    //     })
-    //     .then((response) => {
-    //         console.log(response.data)
-    //     })
-    //     .catch((error) => {
-    //         console.log(error)
-    //     });
-    // }
 
     return (
         <div>

@@ -1,7 +1,6 @@
 package rats.BM.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.web.bind.annotation.*;
 import rats.BM.DTO.BookDTO;
 import rats.BM.Domain.Book;
@@ -37,9 +36,6 @@ public class BookController {
     @GetMapping("/api/book/list")
     @ResponseBody
     public List<Book> getBookList() {
-        for(Book item : bs.findAllBook()){
-            System.out.println(item.getSid());
-        }
         return bs.findAllBook();
     }
 

@@ -1,10 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function ShowBook() {
     const Url = "http://localhost:8080";
 
-    const [bookList, setBookList] = useState();
+    const [state,setState] = useState(false);
+
+    const [bookList, setBookList] = useState({
+        sid:'',
+        isbn:'',
+        bookname:'',
+        author:'',
+        publisher:''
+    });
+
+    useEffect(() => {
+        showBookList()
+        // eslint-disable-next-line
+    }, [])
 
     const bookListHandler = (e) => {
         e.preventDefault();
@@ -17,35 +30,36 @@ function ShowBook() {
             setBookList(response.data)
         })
         .catch((error) => {
+            console.log("error")
             console.log(error)
         });
     }
 
     return (
-        <form onSubmit={bookListHandler}>
+            <form onSubmit={bookListHandler}>
                     <h1>책 조회</h1>
-                    <button type="submit">조회</button>
+                    <button onClick={() => setState(!state)}>{!state ? "조회" : "숨기기"}</button>
                     <br/>
                     <label>BookList</label>
                     <table>
                         <thead>
+                        </thead>
+                        <tbody>
                         <tr>
-                            <th>sid</th>
                             <th>ISBN</th>
                             <th>BookName</th>
                             <th>Author</th>
                             <th>Publisher</th>
                         </tr>
-                        </thead>
-                        <tbody>
-                            {bookList.map((item) => {
-                                return(
+                            {state && bookList.map((item) => {
+                                return (
                                     <tr>
-                                        <td>{item.sid}</td>
                                         <td>{item.isbn}</td>
                                         <td>{item.bookname}</td>
                                         <td>{item.author}</td>
                                         <td>{item.publisher}</td>
+                                        <td><button>대출</button></td>
+                                        <td><button>반납</button></td>
                                     </tr>
                                 )
                             })}
