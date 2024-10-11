@@ -1,12 +1,12 @@
 package com.example.book.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @Table(name = "books")
 public class Book {
@@ -26,4 +26,12 @@ public class Book {
 
     @Column(name = "isbn")
     private String isbn;
+
+    @Builder
+    public Book(String title, String author, String publisher, String isbn){
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.isbn = isbn;
+    }
 }
