@@ -13,16 +13,17 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
 
     @Override
-    public int registerBook(BookRegistrationDTO bookRegistrationDTO) {
+    public String registerBook(BookRegistrationDTO bookRegistrationDTO) {
         // 이미 같은 isbn을 가진 책이 있을 경우 예외 발생
-        bookRepository.findByIsbn(bookRegistrationDTO.getIsbn()).ifPresent(a -> {
+        bookRepository.findById(bookRegistrationDTO.getIsbn()).ifPresent(a -> {
             throw new IllegalStateException("이미 등록된 도서입니다.");
         });
 
-        Book book = Book.builder().title(bookRegistrationDTO.getTitle())
+        Book book = Book.builder()
+                .title(bookRegistrationDTO.getTitle())
+                .id(bookRegistrationDTO.getIsbn())
                 .author(bookRegistrationDTO.getAuthor())
                 .publisher(bookRegistrationDTO.getPublisher())
-                .isbn(bookRegistrationDTO.getIsbn())
                 .build();
 
         // 책 등록 성공시 등록 id 반환
