@@ -32,6 +32,10 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	implementation 'org.javassist:javassist:3.15.0-GA'
+	testImplementation 'org.assertj:assertj-core'
+	testRuntimeOnly 'com.mysql:mysql-connector-j'
 }
 
 tasks.named('test') {
