@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @Entity(name = "books")
 public class Book {
 
+    // ISBN를 사용하므로 @GeneratedValue 제거
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private String id;
 
     @Column(name = "title")
     private String title;
@@ -23,14 +23,11 @@ public class Book {
     @Column(name = "publisher")
     private String publisher;
 
-    @Column(name = "isbn")
-    private String isbn;
-
     @Builder
-    public Book(String title, String author, String publisher, String isbn){
+    public Book(String id, String title, String author, String publisher){
+        this.id = id;
         this.title = title;
         this.author = author;
         this.publisher = publisher;
-        this.isbn = isbn;
     }
 }
